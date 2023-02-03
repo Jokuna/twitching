@@ -16,6 +16,11 @@ const servers = [
   },
 ]
 
+const google_opensocial_proxy = () => {
+  const random_num = (digit) => `${Math.floor(Math.random() * (10**digit - 1)) + 1}`.padStart(digit, '0')
+  return `https://${random_num(6)}-opensocial.googleusercontent.com/gadgets/proxy?container=focus&refresh=300&url=\\0`
+}
+
 const store = {
   get: async key => {
     return new Promise(resolve => {
@@ -35,7 +40,7 @@ const store = {
 
 const updateRule = server => {
   chrome.declarativeNetRequest.updateDynamicRules({
-    removeRuleIds: [1],
+    removeRuleIds: [1, 3],
   })
 
   if (!server) return
@@ -63,6 +68,23 @@ const updateRule = server => {
             'webtransport',
             'webbundle',
             'other',
+          ],
+        },
+      },
+      {
+        id: 3,
+        priority: 1,
+        action: {
+          type: 'redirect',
+          redirect: {
+            regexSubstitution: google_opensocial_proxy(),
+          },
+        },
+        condition: {
+          regexFilter: '^https:\/\/video-edge-[A-z0-9]+\.[A-z0-9]+\.abs\.hls\.ttvnw\.net/(.*)',
+          requestMethods: [
+            'get',
+            'post'
           ],
         },
       },
