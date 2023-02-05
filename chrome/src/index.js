@@ -18,7 +18,7 @@ const servers = [
 
 const google_opensocial_proxy = () => {
   const random_num = (digit) => `${Math.floor(Math.random() * (10**digit - 1)) + 1}`.padStart(digit, '0')
-  return `https://${random_num(6)}-opensocial.googleusercontent.com/gadgets/proxy?container=focus&refresh=300&url=\\0`
+  return `https://${random_num(6)}-opensocial.googleusercontent.com/gadgets/proxy?container=focus&refresh=300&no_expand=1&rewriteMime=application%2Foctet-stream&url=\\0`
 }
 
 const store = {
