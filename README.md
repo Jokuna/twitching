@@ -6,7 +6,7 @@ Google OpenSocial platform Proxy API를 통해 720p 영상 화질 제한을 우�
 
 > 본 서비스, 클라이언트, 리소스 등을 사용하여 발생하는 일에 대한 책임은 모두 사용자 본인에게 있습니다. 본 개발자는 확장 프로그램을 사용하면서 발생한 문제에 대해 책임을 지지 않습니다.
 
-> 본 프로젝트는 POC의 일환일 뿐이며, 언제든지 막힐 수 있습니다.
+> 본 프로젝트는 POC의 일환일 뿐이며, 언제든지 막힐 수 있으며, VPN 사용을 권장합니다.
 
 ## 지원대상
 
@@ -28,3 +28,10 @@ Workers Edge 설정하는데에는 크게 3가지 방법이 있습니다.
     api.twitch.tyo.kwabang.net/proxy/https://usher.ttvnw.net/api/channel/hls
     ```
   - 해당 방법 사용 시, 다른 방법들과 다르게 일본서버 m3u8을 가져옵니다.(지역 고정)
+
+
+## 딜레이가 너무 심한 경우
+
+- [Twitch Latency Display](https://chrome.google.com/webstore/detail/twitch-latency-display/gfbfblhgcnaceejlekkogpbjjogdealk)를 설치하신 뒤,
+
+- `'구글서버 갱신'` 버튼을 한두번 누른 후, Twitch Latency Display의 `'스트림 버퍼 빨리 감기'` 버튼을 연타하셔서 딜레이를 줄이시면 됩니다.
