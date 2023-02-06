@@ -21,6 +21,34 @@ const google_opensocial_proxy = () => {
   return `https://${random_num(6)}-opensocial.googleusercontent.com/gadgets/proxy?container=focus&refresh=300&no_expand=1&rewriteMime=application%2Foctet-stream&url=\\0`
 }
 
+const GSEupdate = () => {
+  chrome.declarativeNetRequest.updateDynamicRules({
+    removeRuleIds: [3],
+  });
+
+  chrome.declarativeNetRequest.updateDynamicRules({
+    addRules: [
+      {
+        id: 3,
+        priority: 1,
+        action: {
+          type: 'redirect',
+          redirect: {
+            regexSubstitution: google_opensocial_proxy(),
+          },
+        },
+        condition: {
+          regexFilter: '^https:\/\/video-edge-[A-z0-9]+\.[A-z0-9]+\.abs\.hls\.ttvnw\.net/(.*)',
+          requestMethods: [
+            'get',
+            'post'
+          ],
+        },
+      },
+    ],
+  });
+}
+
 const store = {
   get: async key => {
     return new Promise(resolve => {
@@ -68,23 +96,6 @@ const updateRule = server => {
             'webtransport',
             'webbundle',
             'other',
-          ],
-        },
-      },
-      {
-        id: 3,
-        priority: 1,
-        action: {
-          type: 'redirect',
-          redirect: {
-            regexSubstitution: google_opensocial_proxy(),
-          },
-        },
-        condition: {
-          regexFilter: '^https:\/\/video-edge-[A-z0-9]+\.[A-z0-9]+\.abs\.hls\.ttvnw\.net/(.*)',
-          requestMethods: [
-            'get',
-            'post'
           ],
         },
       },
@@ -147,6 +158,7 @@ const renderInputs = async () => {
     element.appendChild(radioInput)
     list.appendChild(element)
   })
+  document.getElementById('google').addEventListener("click", GSEupdate)
 }
 
 window.addEventListener('DOMContentLoaded', () => {
