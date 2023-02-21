@@ -101,6 +101,7 @@ const updateRule = server => {
       },
     ],
   })
+  GSEupdate()
 }
 
 const renderInputs = async () => {
