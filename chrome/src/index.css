@@ -42,3 +42,8 @@ input[type="text"] {
 
   outline: none;
 }
+
+.google {
+  padding-top: 10px;
+  padding-left: 10px;
+}

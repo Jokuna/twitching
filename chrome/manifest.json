@@ -1,6 +1,6 @@
 {
-  "name": "Twitching",
-  "version": "1.1",
+  "name": "Twitching Fork",
+  "version": "1.2",
   "manifest_version": 3,
   "description": "Twitching - twitch.tv relay on edges for better experience",
   "icons": {
@@ -20,6 +20,6 @@
     "default_popup": "src/popup.html",
     "default_title": "Twitching"
   },
-  "host_permissions": ["https://*.twitch.tv/*", "https://usher.ttvnw.net/*", "https://*.hls.ttvnw.net/", "https://www-opensocial.googleusercontent.com/*"],
+  "host_permissions": ["https://*.twitch.tv/*", "https://usher.ttvnw.net/*", "https://*.hls.ttvnw.net/", "https://*.googleusercontent.com/*"],
   "permissions": ["declarativeNetRequest", "storage"]
 }
