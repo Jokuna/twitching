@@ -13,6 +13,13 @@
   "background": {
     "service_worker": "src/workers.js"
   },
+  "content_scripts": [
+    {
+      "js": ["src/twitch-script.js"],
+      "matches": [ "https://*.twitch.tv/*" ],
+      "run_at": "document_end"
+    }
+  ],
   "action": {
     "default_icon": {
       "128": "icons/logo@128.png"
